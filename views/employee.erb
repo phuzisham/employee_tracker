@@ -1,0 +1,23 @@
+
+<div class="card">
+  <h3> Update this employee's information:</h3>
+  <h4>Current employee is '<%= @employee.name() %>'.</h4>
+
+  <form action="/employee/<%= @employee.id() %>" method="post">
+    <div class="form-group">
+      <input type="hidden" name="_method" value="patch">
+      <label for="name">Rename this employee:</label>
+      <input type="text" name="name" id="name">
+      <button type="submit" class="btn">Update Employee</button>
+    </div>
+  </form>
+
+  <form action="/employee/<%= @employee.id() %>" method="post">
+    <div class="form-group">
+      <input name="_method" type="hidden" value="delete">
+      <label for="delete">Delete this employee:</label>
+      <button type="submit" class="btn">Delete Employee</button>
+    </div>
+  </form>
+  <a href="/"><button class="btn">Return To Homepage</a>
+</div>
