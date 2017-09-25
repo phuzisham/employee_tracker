@@ -79,7 +79,6 @@ post("/project/:id") do
   @project = Project.find(params["id"])
   project_id = @project.id
   name = params['name']
-  binding.pry
   Employee.where(name: name).update({:project_id => project_id})
   erb(:project)
 end

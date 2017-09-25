@@ -2,6 +2,8 @@
 <div class="card">
   <h3> Update this employee's information:</h3>
   <h4>Current employee is '<%= @employee.name() %>'.</h4>
+  <h4>Current division is <%= Division.find(@employee.division_id()).description %></h4>
+  <h4>Current project is <%= Project.find(@employee.project_id()).title %></h4>
 
   <form action="/employee/<%= @employee.id() %>" method="post">
     <div class="form-group">
