@@ -3,6 +3,7 @@ require("pg")
 require("sinatra/activerecord")
 require("employee")
 require("division")
+require("project")
 
 ENV['RACK_ENV'] = 'test'
 

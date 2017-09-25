@@ -29,5 +29,39 @@
 
     <% end %>
     </div>
+  </div><!--col-->
+</div> <!--row-->
+<br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <h3>Add New Project</h3>
+
+      <form action="/create_project" method="post">
+        <div class="form-group">
+          <label for="title" class="form-label">Assign a title to your project:</label>
+          <input type="text" name="title" class"form-control" id="title" autofocus>
+          <button type="submit" class="button btn">Create Project</button>
+        </div>
+      </form>
+    </div>
   </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <% if @projects.any?() %>
+      <h3>Here are your projects:</h3>
+
+      <ul>
+        <% @projects.each() do |project| %>
+          <li><a href="/project/<%= project.id() %>"><%= project.title() %></a> </li>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+        <p>There are no projects yet!</p>
+
+    <% end %>
+    </div>
+  </div><!--col-->
 </div>

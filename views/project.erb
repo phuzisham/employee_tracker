@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <h3> Update the <%=@project.title() %> project:</h3>
+
+      <form action="/project/<%= @project.id() %>" method="post">
+        <div class="form-group">
+          <label for="name" class="form-label">New employees name:</label>
+          <input type="text" name="name" class"form-control" id="name" autofocus>
+          <button type="submit" class="button btn">Add Employee</button>
+        </div>
+      </form>
+      <br>
+      <form action="/project/<%= @project.id() %>" method="post">
+        <div class="form-group">
+          <input type="hidden" name="_method" value="patch">
+
+          <label for="title">Rename your project:</label>
+          <input type="text" name="title" id="title">
+
+          <button type="submit" class="button btn">Update Project</button>
+        </div>
+      </form>
+      <br>
+      <form action="/project/<%= @project.id() %>" method="post">
+        <div class="form-group">
+          <input name="_method" type="hidden" value="delete">
+          <label for="delete">Delete your project:</label>
+          <button type="submit" class="button btn">Delete Project</button>
+        </div>
+      </form>
+      <a href="/"><button class="btn">Return To Homepage</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <h1><%= @project.title() %></h1>
+
+      <% if @project.employees().any?() %>
+        <h3>Here are all the employees in this project:</h3>
+
+        <ul>
+          <% @project.employees().each() do |employee| %>
+            <li><a href="/employee/<%= employee.id() %>"><%= employee.name() %></a></li>
+          <% end %>
+        </ul>
+
+        <% else %>
+          <p>There are no employees on this project!</p>
+      <% end %>
+    </div>
+  </div>
+</div>
