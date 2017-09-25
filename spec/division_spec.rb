@@ -1,6 +1,6 @@
 require('spec_helper')
 
-describe(Division) do
+describe(Division) do  
   describe("#employees") do
     it("tells which employees are in it") do
       test_division = Division.create({:description => "division"})
@@ -9,4 +9,4 @@ describe(Division) do
      expect(test_division.employees()).to(eq([test_employee1, test_employee2]))
     end
   end
-end
+end #Division class
