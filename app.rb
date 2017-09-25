@@ -14,7 +14,20 @@ end
 
 post("/create_division") do
   description = params["description"]
-  division = Division.create({:description => description})
+  Division.create({:description => description})
   @divisions = Division.all()
   erb(:index)
+end
+
+get("/division/:id") do
+  @division = Division.find(params["id"])
+  erb(:division)
+end
+
+post("/division/:id") do
+  @division = Division.find(params["id"])
+  division_id = @division.id
+  name = params['name']
+  Employee.create({:name => name, :division_id => division_id})
+  erb(:division)
 end

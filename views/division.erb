@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="well">
+      <h3> Update the <%=@division.description() %> division:</h3>
+
+      <form action="/division/<%= @division.id() %>" method="post">
+        <div class="form-group">
+          <label for="name" class="form-label">New employees name:</label>
+          <input type="text" name="name" class"form-control" id="name" autofocus>
+          <button type="submit" class="button btn">Add Employee</button>
+        </div>
+      </form>
+      <br>
+      <form action="/division/<%= @division.id() %>" method="post">
+        <div class="form-group">
+          <input type="hidden" name="_method" value="patch">
+
+          <label for="description">Rename your division:</label>
+          <input type="text" name="description" id="description">
+
+          <button type="submit" class="button btn">Update Division</button>
+        </div>
+      </form>
+      <br>
+      <form action="/division/<%= @division.id() %>" method="post">
+        <div class="form-group">
+          <input name="_method" type="hidden" value="delete">
+          <label for="delete">Delete your division:</label>
+          <button type="submit" class="button btn">Delete Division</button>
+        </div>
+      </form>
+      <a href="/"><button class="btn">Return To Homepage</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="well">
+      <h1><%= @division.description() %></h1>
+
+      <% if @division.employees().any?() %>
+        <h3>Here are all the employees in this division:</h3>
+
+        <ul>
+          <% @division.employees().each() do |employee| %>
+            <li><a href="/employee/<%= employee.id() %>"><%= employee.name() %></a></li>
+          <% end %>
+        </ul>
+
+        <% else %>
+          <p>There are no employees on this division!</p>
+      <% end %>
+    </div>
+  </div>
+</div>
